@@ -6,8 +6,8 @@ X = [["hallo","wie","geht","es","dir","denn","so"],
      ["alle", "meine", "freunde", "geht", "es", "gut"]
      ]
 
-N = 4
-k=6
+N = len(X)
+k = 2
 
 def test(X=X, N=N, k=k):
     preprocessing.preprocess(X, N, k)
