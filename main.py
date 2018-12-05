@@ -1,5 +1,5 @@
 import preprocessing
-
+import preprocessing_pseudo
 X = [["hallo","wie","geht","es","dir","denn","so"],
      ["alle","meine","freunde","geht","es","gut"],
      ["das","ist","der","letze","test","satz"],

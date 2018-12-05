@@ -1,5 +1,5 @@
 def bubbleSort(c, y):
-    for value in range(len(c)-1,0,-1):
+    for value in range(len(c)-1, 0, -1):
         for i in range(value):
             if c[i]<c[i+1]:
                 temp = c[i]
@@ -11,7 +11,9 @@ def bubbleSort(c, y):
     return(c, y)
 
 def append(target, source):
-    target = target + source
+    size = len(target)
+    target = target.append(-1)
+    target[size] = source
     # ... target[length(target)] = source
     return target
 
@@ -35,7 +37,12 @@ def preprocess(X, n, k):
                 y = append(y, fragment)
                 c = append(c, [1])
             i = i + 1
+
+    print(c)
+    print(y)
     c, y = bubbleSort(c, y)
+    print(c)
+    print(y)
     print("fin")
 
 if __name__ == "__main__":

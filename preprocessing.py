@@ -36,6 +36,8 @@ def preprocess(X, n, k):
 
     c, y = bubbleSort(c, y)
     print("fin")
+    print(y)
+    print(c)
 
 
 

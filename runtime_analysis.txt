@@ -1,0 +1,59 @@
+                       |
+                       |define: arrays start at 0
+                       |-------------------------------------------------------------
+                       |define PREPROCESS(X, N, k):
+                       |	y <- []
+                       |	c <- []
+                       |	FOR r = 0 TO N DO:
+                       |		rj <-- X[r]
+                       |		upper_limit <-- (length(rj)-1) - (k-1)
+                       |		FOR i TO upper_limit DO:
+                       |			fragment <-- FROM_ARRY(rj, i, k)
+                       |			position <-- CONTAINS_AT(rj, fragment, k)
+                       |			IF position >= 0 THEN:
+                       |				c[position] = c[position] + 1
+                       |			ELSE:
+                       |				y <-- APPEND_ARRAY(y, fragment)
+                       |				c <-- APPEND_ARRAY(c, 1)
+                       |			ENDIF
+                       |	c, y <-- BUBBLE_SORT(c, y)
+                       |--------------------------------------------------------------------------
+                       |define BUBBLE_SORT(main_source, blind_source):
+                       |	FOR i = length(main_source)-1 DOWN TO 1 DO:
+                       |		FOR j = 0 TO i DO:
+                       |			IF main_source[j] < main_source[j+1]:
+                       |				temp_m <-- main_source[j]
+                       |				temp_b <-- blind_source[j]
+                       |				main_source[j] <-- main_souce[j+1]
+                       |				blind_source[j] <-- blind_source[j+1]
+                       |				main_source[j+1] <-- temp_m
+                       |				blind_source[j+1] <-- temp_b
+                       |	RETURN main_source, blind_source
+                       |--------------------------------------------------------------------------
+                       |define CONTAINS_AT(source, target, length):
+                       |	target_length <- lenght(target)
+                       |	upper_limit <- i + (target_length-1)
+                       |	sub_string <-- NULL
+                       |	FOR i = 0 TO upper_limit DO:
+                       |		sub_string <-- FROM_ARRY(source, i, length)
+                       |		val <-- CompareString(sub_string, target)
+                       |		IF val IS true THEN:
+                       |			RETURN i
+                       |		ENDIF
+                       |	RETURN -1
+                       |--------------------------------------------------------------------------
+                       |define FROM_ARRAY(source, start, length):
+                       |	temp  <-- ""
+                       |	upper_limit <-- i + (length - 1)
+                       |	FOR i = start TO upper_limit DO:
+                       |			temp <-- temp + source[i]
+                       |			IF i IS NOT upper_limit THEN:
+                       |				temp <-- temp + " "
+                       |			ENDIF
+                       |	RETURN temp
+                       |--------------------------------------------------------------------------
+                       |define APPEND_ARRAY(source, target):
+                       |	source_len <-- length(source)
+                       |	source[source_length] <-- target
+                       |	RETURN source
+                       |--------------------------------------------------------------------------
