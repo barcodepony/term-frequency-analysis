@@ -11,14 +11,14 @@ def bubbleSort(c, y):
     return(c, y)
 
 def preprocess(X, n, k):
-    assert isinstance(X, list)
-    assert len(X) == n
-    assert isinstance(k, int)
+    assert isinstance(X, list), "X needs to be a list of lists of strings"
+    assert len(X) == n, "you gave a wrong length"
+    assert isinstance(k, int), "k needs to be a integer and smaller or equal to shortest list"
 
     y = []  # list of text fragments
     c = []  # list of amounts
 
-    for r in  X:
+    for r in X:
         i = 0
         mi = len(r)-1
         while(i <= mi-(k-1)):
@@ -31,13 +31,8 @@ def preprocess(X, n, k):
                 c.append(1)
             i = i + 1
 
-    print(y)
-    print(c)
-
     c, y = bubbleSort(c, y)
-    print("fin")
-    print(y)
-    print(c)
+    return c, y
 
 
 

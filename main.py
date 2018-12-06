@@ -10,7 +10,9 @@ N = len(X)
 k = 2
 
 def test(X=X, N=N, k=k):
-    preprocessing.preprocess(X, N, k)
+    x, y = preprocessing.preprocess(X, N, k)
+    print(x)
+    print(y)
 
 if __name__ == "__main__":
     test()
