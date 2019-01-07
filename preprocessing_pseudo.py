@@ -1,5 +1,5 @@
 def bubbleSort(c, y):
-    for value in range(len(c)-1,0,-1):
+    for value in range(len(c)-1, 0, -1):
         for i in range(value):
             if c[i]<c[i+1]:
                 temp = c[i]
@@ -10,10 +10,17 @@ def bubbleSort(c, y):
                 y[i+1] = temp_y
     return(c, y)
 
+def append(target, source):
+    size = len(target)
+    target = target.append(-1)
+    target[size] = source
+    # ... target[length(target)] = source
+    return target
+
 def preprocess(X, n, k):
-    assert isinstance(X, list), "X needs to be a list of lists of strings"
-    assert len(X) == n, "you gave a wrong length"
-    assert isinstance(k, int), "k needs to be a integer and smaller or equal to shortest list"
+    assert isinstance(X, list)
+    assert len(X) == n
+    assert isinstance(k, int)
 
     y = []  # list of text fragments
     c = []  # list of amounts
@@ -27,12 +34,20 @@ def preprocess(X, n, k):
                 c_i = y.index(fragment)
                 c[c_i] = c[c_i] + 1
             else:
-                y.append(fragment)
-                c.append(1)
+                y = append(y, fragment)
+                c = append(c, [1])
             i = i + 1
 
+    print(c)
+    print(y)
     c, y = bubbleSort(c, y)
-    return c, y
+    print(c)
+    print(y)
+    print("fin")
 
-
-
+if __name__ == "__main__":
+    a = [1, 2, 3, 5]
+    b = [6]
+    print(a)
+    a = append(a, b)
+    print(a)
