@@ -86,7 +86,7 @@ def count_vectorizer(texts, k=1):
     c = []
     # TODO begin
 
-    def __bubbleSort(c, y):
+    def __bubble_sort(c, y):
         for value in range(len(c) - 1, 0, -1):
             for i in range(value):
                 if c[i] < c[i + 1]:
@@ -96,7 +96,7 @@ def count_vectorizer(texts, k=1):
                     y[i] = y[i + 1]
                     c[i + 1] = temp
                     y[i + 1] = temp_y
-        return (c, y)
+        return c, y
 
     def __preprocess(X, n, k):
         assert isinstance(X, list), "X is not an instance of List"
@@ -112,8 +112,8 @@ def count_vectorizer(texts, k=1):
             i = 0
             mi = len(r) - 1
             while (i <= mi - (k - 1)):
-                fragment = r[i:i + k]
-                if fragment in y:
+                fragment = " ".join(r[i:i + k])
+                if " ".join(fragment) in y:
                     c_i = y.index(fragment)
                     c[c_i] = c[c_i] + 1
                 else:
@@ -121,13 +121,10 @@ def count_vectorizer(texts, k=1):
                     c.append(1)
                 i = i + 1
 
-        #print(y)
-        #print(c)
-
-        c, y = __bubbleSort(c, y)
+        c, y = __bubble_sort(c, y)
         return c, y
 
-    y, c = __preprocess(X=texts, n=len(texts), k=k)
+    c, y = __preprocess(X=texts, n=len(texts), k=k)
 
     # TODO end
     return y, c
